@@ -6,12 +6,12 @@
   </head>
   <h4>List of Customers</h4>
   <body ng-controller="CustomerListController as listCtrl">
-    <div ng-repeat="list in listCtrl.lists">
+    <div ng-repeat="customer in listCtrl.customers">
 
-        <h4> Name: {{list.name}} </h4>
-        <h4> Email: {{list.email}} </h4>
-        <h4> Phone: {{list.phone}} </h4>
-        <h4>Address: {{list.address[0].street}} {{list.address[0].city}} {{list.address[0].state}} {{list.address[0].zip}}</h4>
+        <h4> Name: {{customer.name}} </h4>
+        <h4> Email: {{customer.email}} </h4>
+        <h4> Phone: {{customer.phone}} </h4>
+        <h4>Address: {{customer.address[0].street}} {{customer.address[0].city}} {{customer.address[0].state}} {{customer.address[0].zip}}</h4>
 
 
     </div>
