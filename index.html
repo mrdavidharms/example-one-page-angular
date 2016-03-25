@@ -1,27 +1,35 @@
 <!doctype html>
-<html ng-app="App">
+<html ng-app="app">
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
     <script src="app.js"></script>
   </head>
-  <body>
-    <h2>Todo</h2>
-    <div ng-controller="CustomerListController as customerList">
-      <span>{{customerList.remaining()}} of {{customerList.todos.length}} remaining</span>
-      [ <a href="" ng-click="customerList.archive()">archive</a> ]
-      <ul class="unstyled">
-        <li ng-repeat="todo in customerList.todos">
-          <label class="checkbox">
-            <input type="checkbox" ng-model="todo.done">
-            <span class="done-{{todo.done}}">{{todo.text}}</span>
-          </label>
-        </li>
-      </ul>
-      <form ng-submit="customerList.addTodo()">
-        <input type="text" ng-model="customerList.todoText"  size="30"
-               placeholder="add new todo here">
-        <input class="btn-primary" type="submit" value="add">
-      </form>
+  <h4>List of Customers</h4>
+  <body ng-controller="CustomerListController as listCtrl">
+    <div ng-repeat="customer in listCtrl.customers">
+
+        <h4> Name: {{customer.name}} </h4>
+        <h4> Email: {{customer.email}} </h4>
+        <h4> Phone: {{customer.phone}} </h4>
+        <h4>Address: {{customer.address[0].street}} {{customer.address[0].city}} {{customer.address[0].state}} {{customer.address[0].zip}}</h4>
+
+
     </div>
+    <div ng-controller="CustomerAddController as addCtrl">
+      <form
+      ng-submit="addCtrl.addCustomer()" novalidate>
+        <h2>Add a new customer </h2>
+        <fieldset >Name: <input ng-model="addCtrl.customer.name" type="text"/></fieldset>
+
+        <fieldset >Email: <input ng-model="addCtrl.customer.email" type="email"/></fieldset>
+        <fieldset >phone: <input ng-model="addCtrl.customer.phone" type="text"/></fieldset>
+        <h3>Address</h3>
+        <fieldset >Street: <input ng-model="addCtrl.customer.street" type="text"/></fieldset>
+        <fieldset >City: <input ng-model="addCtrl.customer.city" type="text"/></fieldset>
+        <fieldset >State: <input ng-model="addCtrl.customer.state" type="text"/></fieldset>
+        <fieldset >Zip: <input ng-model="addCtrl.customer.zip" type="text"/></fieldset>
+        <input type="submit" value="Submit"/>
+      </form>
+      </div>
   </body>
 </html>
