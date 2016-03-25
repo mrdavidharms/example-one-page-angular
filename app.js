@@ -1,3 +1,4 @@
+
 var app = angular.module('app', [ ]);
 
 app.controller('CustomerListController', function($http){
@@ -10,8 +11,7 @@ app.controller('CustomerListController', function($http){
 app.controller('CustomerAddController', function($http){
      var self = this;
      self.addCustomer = function() {
-     //below serverUrl would be server where you configured post request
-     //pass self.customer in that, will pass whole customer filled form
+
      $http.post(serverUrl, self.customer).then(function(res){
          self.customers = res.data;
      })
