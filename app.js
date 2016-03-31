@@ -1,28 +1,26 @@
-angular.module('App', [])
-  .controller('CustomerListController', function() {
-    var customerList = this;
-    customerList.customers = [
-      {text:'learn angular', done:true},
-      {text:'build an angular app', done:false}];
 
-    customerList.addCustomer = function() {
-      customerList.customer.push({text:customerList.todoText, done:false});
-      customerList.todoText = '';
-    };
+var app = angular.module('app', [ ]);
 
-    customerList.remaining = function() {
-      var count = 0;
-      angular.forEach(customerList.customer, function(todo) {
-        count += todo.done ? 0 : 1;
-      });
-      return count;
-    };
-
-    customerList.archive = function() {
-      var oldcustomer = customerList.customer;
-      customerList.customer = [];
-      angular.forEach(oldcustomer, function(todo) {
-        if (!todo.done) customerList.customer.push(todo);
-      });
-    };
+app.controller('CustomerListController', function($http){
+  var self = this;
+  $http.get('customers.json').then(function(res){
+     self.customers = res.data;
   });
+});
+
+app.controller('CustomerAddController', function($http){
+     var self = this;
+     self.addCustomer = function() {
+     $http.post(serverUrl, self.customer).then(function(res){
+         self.customers = res.data;
+     })
+     .success(function(data){
+          console.log(data);
+          if (!data.success) {
+            self.errorName = data.errors.name;
+          } else {
+            self.message = data.message;
+          }
+      });
+    };
+});
