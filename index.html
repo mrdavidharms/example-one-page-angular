@@ -6,8 +6,14 @@
   </head>
   <h4>List of Customers</h4>
   <body ng-controller="CustomerListController as listCtrl">
+<<<<<<< HEAD
     <div ng-repeat="customer in listCtrl.customers">
 
+=======
+
+    <div ng-repeat="customer in listCtrl.customers">
+
+>>>>>>> 2f53573c22a1bb26a66fd51992142f1606949b60
         <h4> Name: {{customer.name}} </h4>
         <h4> Email: {{customer.email}} </h4>
         <h4> Phone: {{customer.phone}} </h4>
@@ -19,15 +25,17 @@
       <form
       ng-submit="addCtrl.addCustomer()" novalidate>
         <h2>Add a new customer </h2>
-        <fieldset ng-model="addCtrl.customer.name">Name: <input type="text"/></fieldset>
 
-        <fieldset ng-model="addCtrl.customer.email">Email: <input type="email"/></fieldset>
-        <fieldset ng-model="addCtrl.customer.phone">phone: <input type="text"/></fieldset>
+        <fieldset >Name: <input ng-model="addCtrl.customer.name" type="text"/></fieldset>
+
+        <fieldset >Email: <input ng-model="addCtrl.customer.email" type="email"/></fieldset>
+        <fieldset >phone: <input ng-model="addCtrl.customer.phone" type="text"/></fieldset>
         <h3>Address</h3>
-        <fieldset ng-model="addCtrl.customer.street">Street: <input type="text"/></fieldset>
-        <fieldset ng-model="addCtrl.customer.city">City: <input type="text"/></fieldset>
-        <fieldset ng-model="addCtrl.customer.state">State: <input type="text"/></fieldset>
-        <fieldset ng-model="addCtrl.customer.zip">Zip: <input type="text"/></fieldset>
+        <fieldset >Street: <input ng-model="addCtrl.customer.street" type="text"/></fieldset>
+        <fieldset >City: <input ng-model="addCtrl.customer.city" type="text"/></fieldset>
+        <fieldset >State: <input ng-model="addCtrl.customer.state" type="text"/></fieldset>
+        <fieldset >Zip: <input ng-model="addCtrl.customer.zip" type="text"/></fieldset>
+
         <input type="submit" value="Submit"/>
       </form>
       </div>
