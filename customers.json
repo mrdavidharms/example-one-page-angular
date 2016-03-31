@@ -1,0 +1,8 @@
+{"customer": { "name": "Frank Wright",
+  "email": "Frank@gmail.com",
+  "phone":"650-879-1111",
+  "address": [{
+  "street": "123 Gull dr.",
+  "city": "San Bordino",
+  "state": "CA",
+  "zip": "34405"}]}}
